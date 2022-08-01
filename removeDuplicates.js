@@ -3,21 +3,38 @@
  * Remove Duplicates from sorted array
  */
 
+
+// og solution
 var removeDuplicates = function (nums) {
     numsLength = nums.length;
-    i = 1;
+    i = 0;
     for (j = 1; j < numsLength; j++) {
-        if (nums[j] != nums[j - 1]) {
-            nums[i] = nums[j]
+        if (nums[i] == nums[j]) {
+            continue
+        } else {
             i++;
+            nums[i] = nums[j]
         }
     }
-    return i
+    return i + 1;
 };
 
 
-// removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])
+// other soultion
+// var removeDuplicates = function (nums) {
+//     numsLength = nums.length;
+//     i = 1;
+//     for (j = 1; j < numsLength; j++) {
+//         if (nums[j] != nums[j - 1]) {
+//             nums[i] = nums[j]
+//             i++;
+//         }
+//     }
+//     return i
+// };
 
+
+// removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])
 
 console.log(removeDuplicates([1, 1, 2]))
 console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
