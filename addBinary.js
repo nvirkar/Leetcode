@@ -4,40 +4,27 @@
  */
 
 var addBinary = function (a, b) {
-    aArr = a.split("")
-    bArr = b.split("")
-    aLength = aArr.length;
-    bLength = bArr.length;
-    // create same length
-    if (aLength != bLength) {
-        diff = Math.abs(aLength - bLength)
-        while (diff != 0) {
-            if (aLength > bLength) {
-                bArr.unshift("0")
-                diff--
-            }
-            else {
-                aArr.unshift("0")
-                diff--
-            }
-        }
-    }
-    aLength = aArr.length;
-    bLength = bArr.length;
-    res = [];
-    carry = 0;
-    for (i = aLength - 1; i > -1; i--) {
-        res[i] = parseInt(aArr[i]) + parseInt(bArr[i]) + carry
-
-        if (res[i] > 1) {
-            carry = 1
-            res[i] = res[i] == 2 ? 0 : 1
+    maxLength = Math.max(a.length, b.length);
+    i = a.length - 1
+    j = b.length - 1
+    carry = 0
+    res = []
+    k = maxLength - 1;
+    while (a[i] || b[j]) {
+        res[k] = parseInt(a[i] || 0) + parseInt(b[j] || 0) + carry
+        if (res[k] < 2) {
+            carry = 0;
         } else {
-            carry = 0
+            carry = 1
+            res[k] = res[k] - 2
         }
+
+        i--;
+        j--;
+        k--;
     }
     if (carry == 1) {
-        res.unshift(carry)
+        res.unshift(1)
     }
     return res.join("")
 };
