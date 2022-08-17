@@ -1,6 +1,7 @@
 /**
  * Leetcode-169
  * Majority Element
+ * https://leetcode.com/problems/majority-element/
  */
 
 var majorityElement = function (nums) {

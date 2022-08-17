@@ -1,6 +1,7 @@
 /**
  * Leetcode-28
  * Implement strStr
+ * https://leetcode.com/problems/implement-strstr/
  */
 
 var strStr = function (haystack, needle) {

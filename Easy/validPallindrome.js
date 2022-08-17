@@ -1,6 +1,7 @@
 /**
  * Leetcode-125
  * Valid Pallindrome
+ * https://leetcode.com/problems/valid-palindrome/
  */
 
 var isPalindrome = function (s) {
