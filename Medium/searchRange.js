@@ -5,34 +5,34 @@
  */
 
 var searchRange = function (nums, target) {
-    numsLength = nums.length;
-    if (numsLength == 1) {
-        return nums[0] == target ? [0, 0] : [-1, -1]
-    }
+    first = search(nums, target, true)
+    last = search(nums, target, false)
+
+    return [first, last]
+};
+
+
+var search = function (nums, target, isStart) {
+    ans = -1
+    numslength = nums.length;
     low = 0;
-    high = numsLength - 1;
+    high = numslength - 1;
     while (low <= high) {
         mid = low + Math.floor((high - low) / 2)
-        if (nums[mid] == target) {
-            i = mid, j = mid
-            while (nums[i] == target || nums[j] == target) {
-                if (nums[i] == target) {
-                    i--;
-                }
-                if (nums[j] == target) {
-                    j++;
-                }
-            }
-            return [i + 1, j - 1]
-        }
-        else if (nums[mid] > target) {
+        if (target < nums[mid]) {
             high = mid - 1
-        }
-        else {
+        } else if (target > nums[mid]) {
             low = mid + 1
+        } else {
+            ans = mid
+            if (isStart) {
+                high = mid - 1
+            } else {
+                low = mid + 1
+            }
         }
     }
-    return [-1, -1]
+    return ans
 };
 
 console.log(searchRange([5, 7, 7, 8, 8, 10], 8))
@@ -42,6 +42,3 @@ console.log(searchRange([1], 1))
 console.log(searchRange([2, 2], 2))
 console.log(searchRange([1, 3], 1))
 console.log(searchRange([3, 3, 3], 3))
-
-
-
