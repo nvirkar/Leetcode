@@ -5,32 +5,21 @@
  */
 
 var nextGreatestLetter = function (letters, target) {
-    targetNum = target.charCodeAt(0) - 97
-    numArr = letters.map((el) => el.charCodeAt(0) - 97)
-
-    low = 0;
-    high = numArr.length - 1;
-
-    if (targetNum >= numArr[high]) {
+    low = 0
+    high = letters.length - 1;
+    if (target >= letters[high]) {
         return letters[0]
     }
-
     while (low <= high) {
-        mid = low + Math.floor((high - low) / 2)
-        if (targetNum == numArr[mid]) {
-            j = mid;
-            while (targetNum == numArr[j]) {
-                j++
-            }
-            return letters[j]
-        }
-        else if (targetNum > numArr[mid]) {
-            low = mid + 1
-        } else if (targetNum < numArr[mid]) {
+        mid = low + Math.floor((high - low) / 2);
+
+        if (target < letters[mid]) {
             high = mid - 1
+        } else {
+            low = mid + 1
         }
     }
-    return letters[low]
+    return letters[low];
 };
 
 
