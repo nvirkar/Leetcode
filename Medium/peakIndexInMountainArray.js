@@ -6,21 +6,26 @@
 
 
 var peakIndexInMountainArray = function (arr) {
-    ans = -1
     low = 0
     high = arr.length - 1
 
-    while (low <= high) {
+    while (low < high) {
         mid = low + Math.floor(((high - low) / 2))
 
         if (arr[mid] > arr[mid + 1]) {
-            ans = mid;
-            high = mid - 1
+            // you are in descending order
+            // this maybe one of the ans but we are not sure so we use mid
+            high = mid
         } else {
+            // you are in ascending order
+            // mid +1 is definately greater than mid so you can start low at that
             low = mid + 1
         }
     }
-    return ans
+
+    // in the end, low & high will point to same element when the loop breaks because of the condition
+    // both the pointers will try to find the maxiumim elements according to the condition  
+    return low
 };
 
 console.log(peakIndexInMountainArray([0, 1, 0]))
