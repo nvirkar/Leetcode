@@ -47,6 +47,41 @@ var findPivot = function (nums) {
     return -1
 }
 
+
+var findPivotWithDuplicates = function (nums) {
+    low = 0;
+    high = nums.length - 1;
+    while (low <= high) {
+        mid = low + Math.floor((high - low) / 2)
+
+        if (mid < high && nums[mid] > nums[mid + 1]) {
+            return mid
+        }
+        if (mid > low && nums[mid] < nums[mid - 1]) {
+            return mid - 1
+        }
+
+        if (nums[low] == nums[mid] && nums[end] == nums[mid]) {
+            if (nums[low] > nums[low + 1]) {
+                return low
+            }
+            low++
+            if (nums[high] < nums[high - 1]) {
+                return high
+            }
+            high--
+        }
+
+        if (nums[low] < nums[mid] || ((nums[low] == nums[mid]) && nums[mid] > nums[end])) {
+            low = mid + 1
+        }
+        else {
+            high = mid - 1
+        }
+    }
+    return -1
+}
+
 var binarySearch = function (nums, target, low, high) {
     while (low <= high) {
         mid = low + Math.floor((high - low) / 2)
