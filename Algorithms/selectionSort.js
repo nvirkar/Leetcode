@@ -2,6 +2,12 @@
  * Selection Sort
  */
 
+/**
+ * Time complexity
+ * Best => O(n^2)
+ * Worst => O(n^2)
+ */
+
 main = function () {
     arr = [4, 5, 1, 2, 3]
     // arr = [5, 4, 3, 2, 1]
