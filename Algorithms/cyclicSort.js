@@ -11,8 +11,8 @@
 main = function () {
     arr = [3, 5, 2, 1, 4]
     // arr = [5, 4, 3, 2, 1]
-    cyclicSort(arr)
     console.log("unsorted", arr)
+    cyclicSort(arr)
     console.log("sorted  ", arr)
 
 }
@@ -26,10 +26,10 @@ cyclicSort = function (arr) {
     i = 0;
     while (i < arr.length) {
         correct = arr[i] - 1
-        if (arr[correct] == arr[i]) {
-            i++
-        } else {
+        if (arr[correct] != arr[i]) {
             swap(correct, i)
+        } else {
+            i++
         }
     }
 }
