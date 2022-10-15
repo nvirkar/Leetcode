@@ -5,11 +5,13 @@
  */
 
 var missingNumber = function (nums) {
-    initialSum = 0;
-    numsActualSum = nums.reduce((initialSum, el) => initialSum + el);
+    sum = 0;
     numsLength = nums.length;
-    numsCalculatedSum = (numsLength * (numsLength + 1)) / 2;
-    return numsCalculatedSum - numsActualSum;
+    for (i = 0; i < numsLength; i++) {
+        sum += nums[i]
+    }
+    calculatedSum = (numsLength * (numsLength + 1)) / 2;
+    return calculatedSum - sum;
 };
 
 console.log(missingNumber([3, 0, 1]))
