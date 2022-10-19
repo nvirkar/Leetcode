@@ -4,8 +4,11 @@
  * https://leetcode.com/problems/single-number/
  */
 
+/**
+ * Brute force dictionary approach
+ */
 
-var singleNumber = function (nums) {
+var singleNumberBrute = function (nums) {
     numsLength = nums.length;
     if (numsLength == 1) {
         return nums[0]
@@ -25,6 +28,21 @@ var singleNumber = function (nums) {
             return dictKeys[i]
         }
     }
+};
+
+/**
+ * Bitwise operations
+ * using ex-or operator
+ * n^n =0 && n^0 = n
+ */
+
+
+var singleNumber = function (nums) {
+    res = 0;
+    for (const iterator of nums) {
+        res ^= iterator
+    }
+    return res
 };
 
 console.log(singleNumber([2, 2, 1]))
