@@ -18,9 +18,23 @@ var getSubsets = function (processed, unprocessed) {
 
 }
 
+// recursive
+// var subsets = function (nums) {
+//     res = []
+//     getSubsets(nums, [])
+//     return res
+// };
+
+// iterative solution
 var subsets = function (nums) {
-    res = []
-    getSubsets(nums, [])
+    let res = [[]]
+    for (const iterator of nums) {
+        let newRes = JSON.parse(JSON.stringify(res))
+        for (i = 0; i < res.length; i++) {
+            newRes[i].push(iterator);
+        }
+        res.push(...newRes)
+    }
     return res
 };
 
