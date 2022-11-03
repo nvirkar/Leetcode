@@ -1,3 +1,39 @@
+var main = function () {
+    // fnCount()
+    // fnPath()
+    // fnPathArr()
+    // fnPathArrDiagonal()
+
+    fnPathWithObstacles()
+
+}
+
+var fnCount = function () {
+    console.log(count(3, 3))
+    console.log(count(4, 4))
+}
+
+var fnPath = function () {
+    path("", 3, 3)
+    path("", 4, 4)
+}
+
+
+var fnPathArr = function () {
+    console.log(pathArr("", 3, 3))
+    console.log(pathArr("", 4, 4))
+}
+var fnPathArrDiagonal = function () {
+    console.log(pathArrDiagonal("", 3, 3))
+    console.log(pathArrDiagonal("", 4, 4))
+}
+
+var fnPathWithObstacles = function () {
+    maze = [[1, 1, 1],
+    [1, 0, 1],
+    [1, 1, 1]]
+    pathwithObstacles("", maze, 0, 0)
+}
 
 // count no of ways to move from (row,col) to (1,1)
 // can move R & D
@@ -63,17 +99,20 @@ var pathArrDiagonal = function (p, row, col) {
     return res;
 }
 
-// console.log(count(3, 3))
-// console.log(count(4, 4))
 
+var pathwithObstacles = function (p, maze, row, col) {
+    if (row == maze.length - 1 && col == maze[0].length - 1) {
+        console.log(p)
+    }
+    if (!maze[row][col]) {
+        return
+    }
+    if (row < maze.length - 1) {
+        pathwithObstacles(p + "D", maze, row + 1, col)
+    }
+    if (col < maze.length - 1) {
+        pathwithObstacles(p + "R", maze, row, col + 1)
+    }
+}
 
-// path("", 3, 3)
-// path("", 4, 4)
-
-// console.log(pathArr("", 3, 3))
-// console.log(pathArr("", 4, 4))
-
-console.log(pathArrDiagonal("", 3, 3))
-// console.log(pathArrDiagonal("", 4, 4))
-
-
+main()
