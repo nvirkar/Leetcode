@@ -4,8 +4,9 @@ var main = function () {
     // fnPathArr()
     // fnPathArrDiagonal()
 
-    fnPathWithObstacles()
+    // fnPathWithObstacles()
 
+    fnPathWithSteps()
 }
 
 var fnCount = function () {
@@ -34,6 +35,17 @@ var fnPathWithObstacles = function () {
     [1, 1, 1]]
     pathwithObstacles("", maze, 0, 0)
 }
+
+var fnPathWithSteps = function () {
+    let maze = [[1, 1, 1],
+    [1, 1, 1],
+    [1, 1, 1]]
+
+    let paths = JSON.parse(JSON.stringify(maze).replace(/1/g, '0'))
+
+    pathWithSteps("", maze, 0, 0, paths, 1)
+}
+
 
 // count no of ways to move from (row,col) to (1,1)
 // can move R & D
@@ -103,6 +115,7 @@ var pathArrDiagonal = function (p, row, col) {
 var pathwithObstacles = function (p, maze, row, col) {
     if (row == maze.length - 1 && col == maze[0].length - 1) {
         console.log(p)
+        return
     }
     if (!maze[row][col]) {
         return
@@ -113,6 +126,42 @@ var pathwithObstacles = function (p, maze, row, col) {
     if (col < maze.length - 1) {
         pathwithObstacles(p + "R", maze, row, col + 1)
     }
+}
+
+var pathWithSteps = function (p, maze, row, col, path, stepCount) {
+    if (row == maze.length - 1 && col == maze[0].length - 1) {
+        path[row][col] = stepCount
+        for (const iterator of path) {
+            console.log(iterator.toString());
+        }
+        console.log(p)
+        console.log();
+        return
+    }
+    if (!maze[row][col]) {
+        return
+    }
+    maze[row][col] = 0
+    path[row][col] = stepCount
+
+
+    if (row < maze.length - 1) {
+        pathWithSteps(p + "D", maze, row + 1, col, path, stepCount + 1)
+    }
+    if (col < maze.length - 1) {
+        pathWithSteps(p + "R", maze, row, col + 1, path, stepCount + 1)
+    }
+    if (row > 0) {
+        pathWithSteps(p + "U", maze, row - 1, col, path, stepCount + 1)
+
+    }
+    if (col > 0) {
+        pathWithSteps(p + "L", maze, row, col - 1, path, stepCount + 1)
+    }
+
+    maze[row][col] = 1
+    path[row][col] = 0
+
 }
 
 main()
