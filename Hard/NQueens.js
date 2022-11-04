@@ -42,6 +42,7 @@ var queens = function (board, row) {
         addDataToResult(board)
         // display(board)
         // console.log();
+        return
 
     }
     for (let col = 0; col < board[0].length; col++) {
