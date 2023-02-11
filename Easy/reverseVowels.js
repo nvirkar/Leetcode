@@ -3,7 +3,7 @@
 // https://leetcode.com/problems/reverse-vowels-of-a-string/
 
 var reverseVowels = function (s) {
-  let vowels = ["a", "e", "i", "o", "u"];
+  let vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
   let letters = s.split("");
   let stringVowels = [];
   for (let i = 0; i < letters.length; i++) {
