@@ -2,20 +2,21 @@
  * Leetcode-1672
  * Richest Customer Wealth
  * https://leetcode.com/problems/richest-customer-wealth/
+ * #LinearSearch
  */
 
 var maximumWealth = function (accounts) {
-    maxWealth = 0
+    let maxWealth = 0;
     for (let i = 0; i < accounts.length; i++) {
-        wealth = 0;
+        let customerWealth = 0;
         for (let j = 0; j < accounts[i].length; j++) {
-            wealth += accounts[i][j]
+            customerWealth += accounts[i][j];
         }
-        if (wealth > maxWealth) {
-            maxWealth = wealth
+        if (customerWealth > maxWealth) {
+            maxWealth = customerWealth;
         }
     }
-    return maxWealth
+    return maxWealth;
 };
 
 console.log(maximumWealth([[1, 2, 3], [3, 2, 1]]))
