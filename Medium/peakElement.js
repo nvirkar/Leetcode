@@ -2,6 +2,7 @@
  * Leetcode-162
  * Find Peak Element
  * https://leetcode.com/problems/find-peak-element/
+ * #BinarySearch
  */
 
 var findPeakElement = function (nums) {
