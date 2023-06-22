@@ -2,26 +2,22 @@
  * Leetcode-35
  * Search Insert Position
  * https://leetcode.com/problems/search-insert-position/
+ * #BinarySearch
  */
 
 var searchInsert = function (nums, target) {
     low = 0;
-    numsLength = nums.length
-    high = numsLength - 1
-    if (target > nums[high]) {
-        return numsLength
-    }
-    if (target < nums[0]) {
-        return 0
-    }
+    high = nums.length - 1;
+
     while (low <= high) {
         mid = low + Math.floor((high - low) / 2)
-        if (nums[mid] == target) {
+        if (target == nums[mid]) {
             return mid
-        } else if (nums[mid] < target) {
-            low = mid + 1
-        } else {
+        }
+        if (target < nums[mid]) {
             high = mid - 1
+        } else {
+            low = mid + 1
         }
     }
     return low
