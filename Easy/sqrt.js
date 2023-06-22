@@ -2,27 +2,29 @@
  * Leetcode-69
  * Sqrt(x)
  * https://leetcode.com/problems/sqrtx/
+ * #BinarySearch
  */
 
 
 var mySqrt = function (x) {
-    if (x == 1) {
-        return 1
+    if (x < 2) {
+        return x;
     }
-    low = 1;
+    low = 2;
     high = x;
+
     while (low <= high) {
-        mid = low + Math.floor((high - low) / 2)
+        mid = low + Math.floor((high - low) / 2);
+
         if (mid * mid == x) {
             return mid;
         } else if (mid * mid > x) {
             high = mid - 1;
-        }
-        else {
+        } else {
             low = mid + 1;
         }
     }
-    return low - 1
+    return high;
 };
 
 
