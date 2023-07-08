@@ -2,6 +2,7 @@
  * Leetcode-81
  * Search in a Rotated Sorted Array II
  * https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
+ * #BinarySearch
  */
 
 var search = function (nums, target) {
