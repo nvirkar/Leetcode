@@ -2,6 +2,7 @@
  * Leetcode-33
  * Search in a Rotated Sorted Array
  * https://leetcode.com/problems/search-in-rotated-sorted-array/
+ * #BinarySearch
  */
 
 var search = function (nums, target) {
@@ -27,56 +28,21 @@ var search = function (nums, target) {
 var findPivot = function (nums) {
     low = 0;
     high = nums.length - 1;
+
     while (low <= high) {
         mid = low + Math.floor((high - low) / 2)
 
-        if (mid < high && nums[mid] > nums[mid + 1]) {
+        if ((mid < high) && nums[mid] > nums[mid + 1]) {
             return mid
         }
-        if (mid > low && nums[mid] < nums[mid - 1]) {
+        if ((mid > low) && nums[mid - 1] > nums[mid]) {
             return mid - 1
         }
 
-        if (nums[mid] <= nums[low]) {
+        if (nums[low] >= nums[mid]) {
             high = mid - 1
-        }
-        else {
+        } else {
             low = mid + 1
-        }
-    }
-    return -1
-}
-
-
-var findPivotWithDuplicates = function (nums) {
-    low = 0;
-    high = nums.length - 1;
-    while (low <= high) {
-        mid = low + Math.floor((high - low) / 2)
-
-        if (mid < high && nums[mid] > nums[mid + 1]) {
-            return mid
-        }
-        if (mid > low && nums[mid] < nums[mid - 1]) {
-            return mid - 1
-        }
-
-        if (nums[low] == nums[mid] && nums[end] == nums[mid]) {
-            if (nums[low] > nums[low + 1]) {
-                return low
-            }
-            low++
-            if (nums[high] < nums[high - 1]) {
-                return high - 1
-            }
-            high--
-        }
-
-        else if (nums[low] < nums[mid] || ((nums[low] == nums[mid]) && nums[mid] > nums[end])) {
-            low = mid + 1
-        }
-        else {
-            high = mid - 1
         }
     }
     return -1
