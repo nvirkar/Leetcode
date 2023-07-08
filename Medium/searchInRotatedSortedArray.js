@@ -38,7 +38,7 @@ var findPivotWithDuplicates = function (nums) {
             return mid - 1
         }
 
-        if (nums[low] == nums[mid] && nums[end] == nums[mid]) {
+        if (nums[low] == nums[mid] && nums[high] == nums[mid]) {
             if (nums[low] > nums[low + 1]) {
                 return low
             }
@@ -49,7 +49,7 @@ var findPivotWithDuplicates = function (nums) {
             high--
         }
 
-        else if (nums[low] < nums[mid] || ((nums[low] == nums[mid]) && nums[mid] > nums[end])) {
+        else if (nums[low] < nums[mid] || ((nums[low] == nums[mid]) && nums[mid] > nums[high])) {
             low = mid + 1
         }
         else {
