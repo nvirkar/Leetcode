@@ -2,23 +2,24 @@
  * Leetcode-240
  * Search a 2D Matrix II
  * https://leetcode.com/problems/search-a-2d-matrix-ii
+ * #BinarySearch
  */
 
 
 var searchMatrix = function (matrix, target) {
-    row = 0
-    col = matrix[0].length - 1
+    let row = 0;
+    let col = matrix[0].length - 1;
 
-    while (row < matrix.length && col >= 0) {
+    while (row < matrix.length && col > -1) {
         if (matrix[row][col] == target) {
-            return true
+            return true;
         } else if (matrix[row][col] > target) {
-            col--
+            col--;
         } else {
-            row++
+            row++;
         }
     }
-    return false
+    return false;
 };
 
 
