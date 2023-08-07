@@ -17,27 +17,29 @@
 main = function () {
     arr = [3, 1, 5, 4, 2]
     // arr = [1, 2, 3, 4, 5]
+    // arr = [1, 2, 4, 3, 5]
+
     console.log("unsorted", arr)
     bubbleSort(arr)
     console.log("sorted  ", arr)
 }
 
 bubbleSort = function (arr) {
-    swapped = false;
+
     // i goes from 0 to n-1
     for (let i = 0; i < arr.length; i++) {
         swapped = false;
         // j goes from 1 to n-i
-        for (let j = 0; j < arr.length - i; j++) {
+        for (let j = 1; j < arr.length - i; j++) {
             if (arr[j - 1] > arr[j]) {
-                temp = arr[j - 1]
-                arr[j - 1] = arr[j]
-                arr[j] = temp
-                swapped = true
+                temp = arr[j - 1];
+                arr[j - 1] = arr[j];
+                arr[j] = temp;
+                swapped = true;
             }
         }
-        if (swapped == false) {
-            break
+        if (!swapped) {
+            break;
         }
     }
 }
