@@ -24,7 +24,7 @@ main = function () {
 }
 
 insertionSort = function (arr) {
-    n = arr.length
+    n = arr.length;
     for (i = 0; i < n - 1; i++) {
         for (j = i + 1; j > 0; j--) {
             if (arr[j - 1] > arr[j]) {
@@ -32,7 +32,7 @@ insertionSort = function (arr) {
                 arr[j - 1] = arr[j]
                 arr[j] = temp
             } else {
-                break
+                break;
             }
         }
     }
