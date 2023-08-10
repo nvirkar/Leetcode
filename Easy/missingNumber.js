@@ -21,25 +21,23 @@ swap = function (nums, first, second) {
     nums[second] = temp
 }
 var missingNumber = function (nums) {
+    numsLength = nums.length;
     i = 0;
-    while (i < nums.length) {
+    while (i < numsLength) {
         correct = nums[i]
-        if (nums[i] < nums.length && nums[correct] != nums[i]) {
+        if (nums[i] < numsLength && nums[correct] != nums[i]) {
             swap(nums, correct, i)
         } else {
             i++
         }
     }
-    for (i = 0; i < nums.length; i++) {
+    for (i = 0; i < numsLength; i++) {
         if (nums[i] != i) {
             return i
         }
     }
-    return nums.length
+    return numsLength
 };
-
-
-
 
 
 console.log(missingNumber([3, 0, 1]))
