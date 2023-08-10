@@ -11,22 +11,22 @@ swap = function (nums, first, second) {
 }
 
 var firstMissingPositive = function (nums) {
+    numsLength = nums.length;
     i = 0;
-    while (i < nums.length) {
+    while (i < numsLength) {
         correct = nums[i] - 1
-        if (nums[i] > 0 && nums[i] <= nums.length && nums[correct] != nums[i]) {
+        if ((nums[i] > 0) && (nums[i] <= numsLength) && nums[i] != nums[correct]) {
             swap(nums, correct, i)
         } else {
             i++
         }
     }
-    console.log(nums)
-    for (i = 0; i < nums.length; i++) {
+    for (i = 0; i < numsLength; i++) {
         if (nums[i] != i + 1) {
             return i + 1
         }
     }
-    return nums.length + 1
+    return numsLength + 1
 };
 
 console.log(firstMissingPositive([1, 2, 0]));
