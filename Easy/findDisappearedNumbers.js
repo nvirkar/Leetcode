@@ -14,15 +14,18 @@ swap = function (nums, first, last) {
 var findDisappearedNumbers = function (nums) {
     res = []
     i = 0;
-    while (i < nums.length) {
+    numsLength = nums.length;
+
+    while (i < numsLength) {
         correct = nums[i] - 1
         if (nums[i] != nums[correct]) {
-            swap(nums, i, correct)
+            swap(nums, correct, i)
         } else {
             i++
         }
     }
-    for (i = 0; i < nums.length; i++) {
+
+    for (i = 0; i < numsLength; i++) {
         if (nums[i] != i + 1) {
             res.push(i + 1)
         }
