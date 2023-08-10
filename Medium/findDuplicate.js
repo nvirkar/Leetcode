@@ -11,19 +11,16 @@ swap = function (nums, first, second) {
 
 var findDuplicate = function (nums) {
     i = 0;
-    while (i < nums.length) {
-        if (nums[i] != i + 1) {
-            correct = nums[i] - 1
-            if (nums[correct] != nums[i]) {
-                swap(nums, correct, i)
-            } else {
-                return nums[i]
-            }
+    numsLength = nums.length;
+    while (i < numsLength) {
+        correct = nums[i] - 1
+        if (nums[i] != nums[correct]) {
+            swap(nums, correct, i)
         } else {
             i++
         }
     }
-    return -1
+    return nums[numsLength - 1]
 };
 
 console.log(findDuplicate([1, 3, 4, 2, 2]))
