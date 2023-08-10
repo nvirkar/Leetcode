@@ -25,7 +25,7 @@ swap = function (first, second) {
 cyclicSort = function (arr) {
     i = 0;
     while (i < arr.length) {
-        correct = arr[i] - 1
+        correct = arr[i] - 1;
         if (arr[correct] != arr[i]) {
             swap(correct, i)
         } else {
