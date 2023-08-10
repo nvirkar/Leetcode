@@ -12,22 +12,24 @@ swap = function (nums, first, second) {
 
 var findDuplicates = function (nums) {
     res = []
+    numsLength = nums.length;
     i = 0;
-    while (i < nums.length) {
-        correct = nums[i] - 1
-        if (nums[correct] != nums[i]) {
-            swap(nums, correct, i)
 
+    while (i < numsLength) {
+        correct = nums[i] - 1
+        if (nums[i] != nums[correct]) {
+            swap(nums, correct, i)
         } else {
             i++
         }
     }
-    console.log(nums)
-    for (i = 0; i < nums.length; i++) {
+
+    for (i = 0; i < numsLength; i++) {
         if (nums[i] != i + 1) {
             res.push(nums[i])
         }
     }
+
     return res
 };
 
