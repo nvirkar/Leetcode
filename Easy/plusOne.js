@@ -2,7 +2,7 @@
  * Leetcode-66
  * Plus One
  * https://leetcode.com/problems/plus-one/
- * Math
+ * #Math
  */
 var plusOne = function (digits) {
   let n = digits.length;

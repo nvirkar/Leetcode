@@ -2,8 +2,8 @@
  * Leetcode-509
  * Fibonacci Number
  * https://leetcode.com/problems/fibonacci-number/
- * Recursion
- * Memoization using array
+ * #Recursion
+ * #Memoization using array
  */
 
 // var fib = function (n) {

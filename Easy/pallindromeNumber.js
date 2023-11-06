@@ -2,7 +2,7 @@
  * Leetcode-9
  * Palindrome Number
  * https://leetcode.com/problems/palindrome-number/
- * Math
+ * #Math
  */
 
 var isPalindrome = function (x) {

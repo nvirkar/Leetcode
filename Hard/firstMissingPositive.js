@@ -2,31 +2,32 @@
  * Leetcode-41
  * First Missing Positive
  * https://leetcode.com/problems/first-missing-positive/
+ * #CyclicSort
  */
 
 swap = function (nums, first, second) {
-    temp = nums[first]
-    nums[first] = nums[second]
-    nums[second] = temp
-}
+  temp = nums[first];
+  nums[first] = nums[second];
+  nums[second] = temp;
+};
 
 var firstMissingPositive = function (nums) {
-    numsLength = nums.length;
-    i = 0;
-    while (i < numsLength) {
-        correct = nums[i] - 1
-        if ((nums[i] > 0) && (nums[i] <= numsLength) && nums[i] != nums[correct]) {
-            swap(nums, correct, i)
-        } else {
-            i++
-        }
+  numsLength = nums.length;
+  i = 0;
+  while (i < numsLength) {
+    correct = nums[i] - 1;
+    if (nums[i] > 0 && nums[i] <= numsLength && nums[i] != nums[correct]) {
+      swap(nums, correct, i);
+    } else {
+      i++;
     }
-    for (i = 0; i < numsLength; i++) {
-        if (nums[i] != i + 1) {
-            return i + 1
-        }
+  }
+  for (i = 0; i < numsLength; i++) {
+    if (nums[i] != i + 1) {
+      return i + 1;
     }
-    return numsLength + 1
+  }
+  return numsLength + 1;
 };
 
 console.log(firstMissingPositive([1, 2, 0]));
