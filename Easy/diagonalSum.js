@@ -2,19 +2,30 @@
  * Leetcode-1572
  * Matrix Diagonal Sum
  * https://leetcode.com/problems/matrix-diagonal-sum/
+ * Array
  */
 
-var diagonalSum = function (grid) {
-  count = 0;
-  for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[0].length; j++) {
-      if (i == j || (i + j == grid.length - 1 && i != j)) {
-        count += grid[i][j];
+var diagonalSum = function(matrix) {
+  sum = 0
+  for(let row = 0;row< matrix.length;row++){
+    for(let col =0; col < matrix[0].length;col++){
+      if((matrix.length -1) == (row + col) || row == col){
+        sum = sum + matrix[row][col]
       }
     }
-  }
-  return count;
+  }  
+  return sum
 };
+
+
+console.log(
+  diagonalSum([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ])
+);
+
 
 console.log(
   diagonalSum([
