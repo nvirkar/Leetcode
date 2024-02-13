@@ -3,6 +3,7 @@
  * Find the Duplicate Number
  * https://leetcode.com/problems/find-the-duplicate-number/
  * #CyclicSort
+ * #Array
  */
 swap = function (nums, first, second) {
   temp = nums[first];

@@ -3,6 +3,7 @@
  * Longest Common Prefix
  * https://leetcode.com/problems/longest-common-prefix/
  * #String
+ * #Array
  */
 
 var longestCommonPrefix = function(strs) {
