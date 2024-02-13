@@ -2,7 +2,7 @@
  * Leetcode-1
  * Two Sum
  * https://leetcode.com/problems/two-sum/
- * Dictionary
+ * #Hashtable
  */
 
 var twoSum = function (nums, target) {
