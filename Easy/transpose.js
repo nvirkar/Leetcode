@@ -2,17 +2,18 @@
  * Leetcode-867
  * Transpose Matrix
  * https://leetcode.com/problems/transpose-matrix/  
+ * Array
  */
 
 var transpose = function (matrix) {
     let newMatrix = []
-
-    for (let row = 0; row < matrix[0].length; row++) {
-        let rowData = []
-        for (let col = 0; col < matrix.length; col++) {
-            rowData.push(matrix[col][row])
+    
+    for(col= 0;col<matrix[0].length;col++){
+        rowArr = []
+        for(row =0 ; row <matrix.length;row++){
+            rowArr.push(matrix[row][col])
         }
-        newMatrix.push(rowData)
+        newMatrix.push(rowArr)
     }
     return newMatrix
 };

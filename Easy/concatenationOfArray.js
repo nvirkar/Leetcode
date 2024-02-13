@@ -2,6 +2,7 @@
  * Leetcode-1929
  * Concatenation of Array
  * https://leetcode.com/problems/concatenation-of-array/
+ * #Array
  */
 
 
@@ -12,11 +13,13 @@
 
 
 var getConcatenation = function (nums) {
-    length = nums.length;
-    for (let i = 0; i < length; i++) {
-        nums.push(nums[i])
+    let result = []
+    let numsLength = nums.length;
+    for (let i = 0; i < numsLength; i++) {
+        result[i] = nums[i]
+        result[i+numsLength] = nums[i]
     }
-    return nums
+    return result
 };
 
 console.log(getConcatenation([1, 2, 1]))
