@@ -2,6 +2,8 @@
  * Leetcode-136
  * Single Number
  * https://leetcode.com/problems/single-number/
+ * #Hashtable
+ * #Bit Manipulation
  */
 
 /**
@@ -9,25 +11,21 @@
  */
 
 var singleNumberBrute = function (nums) {
-    numsLength = nums.length;
-    if (numsLength == 1) {
+    let numsLength = nums.length;
+    if(numsLength == 1){
         return nums[0]
     }
-    dict = {}
-    for (i = 0; i < numsLength; i++) {
+
+    let dict = {}
+
+    for(let i=0;i<numsLength;i++){
         if (!(nums[i] in dict)) {
             dict[nums[i]] = 1
-        } else {
-            dict[nums[i]]++
+        }else{
+            delete dict[nums[i]]
         }
     }
-
-    dictKeys = Object.keys(dict)
-    for (let i = 0; i < dictKeys.length; i++) {
-        if (dict[dictKeys[i]] == 1) {
-            return dictKeys[i]
-        }
-    }
+    return Object.keys(dict)[0]
 };
 
 /**
@@ -38,13 +36,19 @@ var singleNumberBrute = function (nums) {
 
 
 var singleNumber = function (nums) {
-    res = 0;
-    for (const iterator of nums) {
-        res ^= iterator
+    let res;
+
+    for(let num of nums){
+       res = res ^ num
     }
+
     return res
 };
 
 console.log(singleNumber([2, 2, 1]))
 console.log(singleNumber([4, 1, 2, 1, 2]))
 console.log(singleNumber([1]))
+
+console.log(singleNumberBrute([2, 2, 1]))
+console.log(singleNumberBrute([4, 1, 2, 1, 2]))
+console.log(singleNumberBrute([1]))

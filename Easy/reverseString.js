@@ -2,15 +2,20 @@
  * Leetcode-344
  * Reverse String
  * https://leetcode.com/problems/reverse-string/
+ * #Array
  */
 
 var reverseString = function (s) {
-  let length = s.length;
-  for (let i = 0, j = length - 1; i < Math.floor(length / 2); i++, j--) {
-    temp = s[i];
+  let sLength = s.length;
+  let halfLength = Math.floor(sLength/2)
+
+  for(let i=0; i< halfLength;i++){
+    let j = sLength - 1 - i ;
+    let temp = s[i];
     s[i] = s[j];
     s[j] = temp;
   }
+
   return s;
 };
 

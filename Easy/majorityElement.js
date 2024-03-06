@@ -2,20 +2,21 @@
  * Leetcode-169
  * Majority Element
  * https://leetcode.com/problems/majority-element/
+ * #Hashtable
  */
 
-var majorityElement = function (nums) {
-    numsLength = nums.length;
-    ceiling = Math.floor(numsLength / 2)
-    dict = {}
-    for (i = 0; i < numsLength; i++) {
+var majorityElement = function(nums) {
+    let numsLength = nums.length;
+    let ceiling = Math.floor(numsLength/2)
+    let dict = {};
+
+    for(let i=0; i< numsLength;i++){
         if (!(nums[i] in dict)) {
             dict[nums[i]] = 1
-        } else {
+        }else{
             dict[nums[i]]++
-
         }
-        if (dict[nums[i]] > ceiling) {
+        if(dict[nums[i]] > ceiling){
             return nums[i]
         }
     }
