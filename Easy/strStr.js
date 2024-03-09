@@ -2,33 +2,35 @@
  * Leetcode-28
  * Implement strStr
  * https://leetcode.com/problems/implement-strstr/
+ * #Two Pointers
  */
 
 var strStr = function (haystack, needle) {
-    needleLength = needle.length;
-    haystackLength = haystack.length;
-    if (needleLength == 0) {
-        return 0
+  let haystackLength = haystack.length;
+  let needleLength = needle.length;
+
+  for (let i = 0; i < haystackLength; i++) {
+    if (haystack[i] == needle[0]) {
+      let j = i;
+      let k = 0;
+      let count = 0;
+      while (haystack[j] && haystack[j] == needle[k]) {
+        j++;
+        k++;
+        count++;
+      }
+      if (count == needleLength) {
+        return i;
+      }
     }
-    for (i = 0; i < haystackLength; i++) {
-        if (haystack[i] == needle[0]) {
-            j = i;
-            k = 0;
-            l = i;
-            while (haystack[j] == needle[k] && k < needleLength) {
-                j++;
-                k++;
-            }
-            if (k == needleLength) {
-                return l
-            }
-        }
-    }
-    return -1
+  }
+
+  return -1;
 };
 
-
-console.log(strStr("mississippi", "issip"))
-console.log(strStr("a", "a"))
-console.log(strStr("hello", "ll"))
-console.log(strStr("aaaaa", "bba"))
+console.log(strStr("sadbutsad", "sad"));
+console.log(strStr("leetcode", "leeto"));
+console.log(strStr("mississippi", "issip"));
+console.log(strStr("a", "a"));
+console.log(strStr("hello", "ll"));
+console.log(strStr("aaaaa", "bba"));
