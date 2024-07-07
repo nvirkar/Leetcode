@@ -6,36 +6,35 @@
  */
 
 var addBinary = function (a, b) {
-  let max = Math.max(a.length, b.length);
+  first = a.split("");
+  second = b.split("");
 
-  while (a.length != max) {
-    a = "0" + a;
+  carry = 0;
+
+  while (first.length > second.length) {
+    second.unshift("0");
+  }
+  while (second.length > first.length) {
+    first.unshift("0");
   }
 
-  while (b.length != max) {
-    b = "0" + b;
-  }
+  let res = [];
 
-  let res = "";
-  let c = 0;
-  for (let i = a.length - 1; i >= 0; i--) {
-    aDigit = parseInt(a[i]);
-    bDigit = parseInt(b[i]);
-
-    tempRes = aDigit + bDigit + c;
-
-    if (tempRes < 2) {
-      res = tempRes + res;
-      c = 0;
+  for (let i = second.length - 1; i > -1; i--) {
+    let sum = parseInt(first[i]) + parseInt(second[i]) + carry;
+    if (sum > 1) {
+      sum = sum - 2;
+      carry = 1;
     } else {
-      res = "" + tempRes - 2 + res;
-      c = 1;
+      carry = 0;
     }
+    res[i] = sum;
   }
-  if (c == 1) {
-    res = "1" + res;
+
+  if (carry) {
+    res.unshift(carry);
   }
-  return res;
+  return res.join("");
 };
 
 console.log(addBinary("11", "1"));

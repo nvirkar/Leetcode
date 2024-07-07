@@ -6,30 +6,22 @@
  * #Array
  */
 
-var longestCommonPrefix = function(strs) {
-    let result = "";
-    let first = strs[0];
-    let strsLength = strs.length;
-    let firstLength = first.length;
-
-    for(let i=0;i<firstLength;i++){
-        letter = first[i];
-        count = 0;
-        for(let j=0;j<strsLength;j++){
-            if(letter == strs[j][i])
-            count++
-        }
-        if(count == strsLength){
-            result += letter;
-        }else{
-            return result
-        }
+var longestCommonPrefix = function (strs) {
+  let strLength = strs.length;
+  let result = "";
+  let first = strs[0];
+  for (let i = 0; i < first.length; i++) {
+    letter = first[i];
+    for (let j = 0; j < strLength; j++) {
+      if (strs[j][i] != letter) {
+        return result;
+      }
     }
-    
-    return result
+    result += letter;
+  }
+  return result;
 };
 
-
-console.log(longestCommonPrefix(["flower", "flow", "flight"]))
-console.log(longestCommonPrefix(["dog", "racecar", "car"]))
-console.log(longestCommonPrefix([""]))
+console.log(longestCommonPrefix(["flower", "flow", "flight"]));
+console.log(longestCommonPrefix(["dog", "racecar", "car"]));
+console.log(longestCommonPrefix([""]));
