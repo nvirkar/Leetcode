@@ -1,6 +1,9 @@
-// Leetcode-1290
-// Convert Binary Number in a Linked List to Integer
-// https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/description/
+/**
+ * Leetcode-1290
+ * Convert Binary Number in a Linked List to Integer
+ * https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/description/
+ * #Linked List
+ */
 
 class Solution {
     public int getDecimalValue(ListNode head) {

@@ -2,16 +2,17 @@
  * Leetcode-1
  * Two Sum
  * https://leetcode.com/problems/two-sum/
+ * #Hashtable
  */
 
 var twoSum = function (nums, target) {
-    dict = {};
-    numsLength = nums.length;
-    for (i = 0; i < numsLength; i++) {
-        if (!(nums[i] in dict)) {
-            dict[target - nums[i]] = i;
-        } else {
-            return [dict[nums[i]], i]
+    let dict = {}
+    let numsLength = nums.length
+    for (let i = 0; i < numsLength; i++) {
+        if(nums[i] in dict){
+            return [dict[nums[i]],i]
+        }else{
+            dict[target - nums[i]] = i
         }
     }
 };

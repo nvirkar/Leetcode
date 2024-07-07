@@ -2,34 +2,42 @@
  * Leetcode-67
  * Add Binary
  * https://leetcode.com/problems/add-binary/
+ * #Math
  */
 
 var addBinary = function (a, b) {
-    maxLength = Math.max(a.length, b.length);
-    i = a.length - 1
-    j = b.length - 1
-    carry = 0
-    res = []
-    k = maxLength - 1;
-    while (a[i] || b[j]) {
-        res[k] = parseInt(a[i] || 0) + parseInt(b[j] || 0) + carry
-        if (res[k] < 2) {
-            carry = 0;
-        } else {
-            carry = 1
-            res[k] = res[k] - 2
-        }
+  first = a.split("");
+  second = b.split("");
 
-        i--;
-        j--;
-        k--;
+  carry = 0;
+
+  while (first.length > second.length) {
+    second.unshift("0");
+  }
+  while (second.length > first.length) {
+    first.unshift("0");
+  }
+
+  let res = [];
+
+  for (let i = second.length - 1; i > -1; i--) {
+    let sum = parseInt(first[i]) + parseInt(second[i]) + carry;
+    if (sum > 1) {
+      sum = sum - 2;
+      carry = 1;
+    } else {
+      carry = 0;
     }
-    if (carry == 1) {
-        res.unshift(1)
-    }
-    return res.join("")
+    res[i] = sum;
+  }
+
+  if (carry) {
+    res.unshift(carry);
+  }
+  return res.join("");
 };
 
-console.log(addBinary("11", "1"))
-console.log(addBinary("1", "11"))
-console.log(addBinary("1010", "1011"))
+console.log(addBinary("11", "1"));
+console.log(addBinary("1", "11"));
+console.log(addBinary("1010", "1011"));
+console.log(addBinary("1111", "1111"));

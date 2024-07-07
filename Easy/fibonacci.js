@@ -3,7 +3,7 @@
  * Fibonacci Number
  * https://leetcode.com/problems/fibonacci-number/
  * #Recursion
- * #Memoization using array
+ * #Memoization
  */
 
 // var fib = function (n) {
