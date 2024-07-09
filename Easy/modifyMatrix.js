@@ -7,31 +7,22 @@
 
 var modifiedMatrix = function (matrix) {
   colMax = [];
-  maxRows = matrix.length;
-  maxCols = matrix[0].length;
-
-  for (let col = 0; col < maxCols; col++) {
-    max = -2;
-    for (let row = 0; row < maxRows; row++) {
+  for (let col = 0; col < matrix[0].length; col++) {
+    let max = matrix[0][col];
+    for (let row = 0; row < matrix.length; row++) {
       max = Math.max(max, matrix[row][col]);
     }
-    colMax.push(max);
+    colMax[col] = max;
   }
-
-  answer = [];
-  for (let row = 0; row < maxRows; row++) {
-    rowData = [];
-    for (let col = 0; col < maxCols; col++) {
-      if (matrix[row][col] == -1) {
-        rowData.push(colMax[col]);
-      } else {
-        rowData.push(matrix[row][col]);
+  for (let row = 0; row < matrix.length; row++) {
+    for (let col = 0; col < matrix[0].length; col++) {
+      number = matrix[row][col];
+      if (number == -1) {
+        matrix[row][col] = colMax[col];
       }
     }
-    answer.push(rowData);
   }
-
-  return answer;
+  return matrix;
 };
 
 console.log(
