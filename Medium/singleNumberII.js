@@ -6,24 +6,17 @@
  */
 
 var singleNumber = function (nums) {
-  let numsLength = nums.length;
-  let dict = {};
+  dict = {};
+  numsLength = nums.length;
   for (let i = 0; i < numsLength; i++) {
-    if (!(nums[i] in dict)) {
-      dict[nums[i]] = 1;
+    if (dict[nums[i]]) {
+      dict[nums[i]] = dict[nums[i]] + 1;
     } else {
-      dict[nums[i]]++;
+      dict[nums[i]] = 1;
     }
   }
-
-  let keys = Object.keys(dict);
-  let keyLength = keys.length;
-  for (let i = 0; i < keyLength; i++) {
-    if (dict[keys[i]] == 1) {
-      return keys[i];
-    }
-  }
-  return res;
+  ans = Object.keys(dict).find((key) => dict[key] == 1);
+  return ans;
 };
 
 console.log(singleNumber([2, 2, 3, 2]));
