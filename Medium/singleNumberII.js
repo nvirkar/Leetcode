@@ -9,7 +9,7 @@ var singleNumber = function (nums) {
   dict = {};
   numsLength = nums.length;
   for (let i = 0; i < numsLength; i++) {
-    if (dict[nums[i]]) {
+    if (nums[i] in dict) {
       dict[nums[i]] = dict[nums[i]] + 1;
     } else {
       dict[nums[i]] = 1;

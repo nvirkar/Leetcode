@@ -8,14 +8,14 @@
 // nCr = n! / (r! * (n - r)!)
 
 var getRow = function (rowIndex) {
-  let fact = [1];
-  let res = [];
+  fact = [1];
+  res = [];
   for (let i = 1; i <= rowIndex; i++) {
     fact[i] = i * fact[i - 1];
   }
-  for (let j = 0; j <= rowIndex; j++) {
-    value = fact[rowIndex] / (fact[j] * fact[rowIndex - j]);
-    res.push(value);
+  for (j = 0; j <= rowIndex; j++) {
+    num = fact[rowIndex] / (fact[j] * fact[rowIndex - j]);
+    res.push(Math.round(num));
   }
 
   return res;
