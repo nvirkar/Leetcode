@@ -6,13 +6,14 @@
  */
 
 var countKeyChanges = function (s) {
-  let count = 0;
-  let sLength = s.length;
-  let letter = s[0].toLowerCase();
-  for (let i = 1; i < sLength; i++) {
-    if (letter != s[i].toLowerCase()) {
-      count = count + 1;
-      letter = s[i].toLowerCase();
+  s = s.toLowerCase();
+  count = 0;
+  key = s[0];
+  sLength = s.length;
+  for (i = 0; i < sLength; i++) {
+    if (s[i] != key) {
+      count++;
+      key = s[i];
     }
   }
   return count;
