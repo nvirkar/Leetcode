@@ -5,16 +5,17 @@
  * #Array
  */
 
-var checkXMatrix = function (grid) {
-  for (let row = 0; row < grid.length; row++) {
-    for (let col = 0; col < grid[0].length; col++) {
-      number = grid[row][col];
-      if (grid.length - 1 == row + col || row == col) {
-        if (number == 0) {
+var checkXMatrix = function (matrix) {
+  maxRows = matrix.length;
+  for (let row = 0; row < maxRows; row++) {
+    for (let col = 0; col < matrix[0].length; col++) {
+      cell = matrix[row][col];
+      if (row == col || row + col + 1 == maxRows) {
+        if (cell == 0) {
           return false;
         }
       } else {
-        if (number != 0) {
+        if (cell != 0) {
           return false;
         }
       }
