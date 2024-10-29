@@ -5,19 +5,18 @@
  * #Recursion
  */
 
-var getSteps = function (n, count) {
-  if (n == 1) {
-    return count;
-  }
-  if (n % 2 == 0) {
-    return getSteps(Math.floor(n / 2), count + 1);
-  } else {
-    return Math.min(getSteps(n - 1, count + 1), getSteps(n + 1, count + 1));
-  }
+var integerReplacement = function (num) {
+  return helper(num, 0);
 };
 
-var integerReplacement = function (n) {
-  return getSteps(n, 0);
+var helper = function (num, steps) {
+  if (num == 1) {
+    return steps;
+  } else if (num % 2 == 0) {
+    return helper(Math.floor(num / 2), steps + 1);
+  } else {
+    return Math.min(helper(num - 1, steps + 1), helper(num + 1, steps + 1));
+  }
 };
 
 console.log(integerReplacement(8));

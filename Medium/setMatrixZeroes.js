@@ -8,26 +8,29 @@
 var setZeroes = function (matrix) {
   row = [];
   col = [];
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix[i].length; j++) {
+
+  maxRows = matrix.length;
+  maxCols = matrix[0].length;
+  for (let i = 0; i < maxRows; i++) {
+    for (let j = 0; j < maxCols; j++) {
       if (matrix[i][j] == 0) {
-        row.push(i);
-        col.push(j);
+        if (!row.includes(i)) {
+          row.push(i);
+        }
+        if (!col.includes(j)) {
+          col.push(j);
+        }
       }
     }
   }
 
-  row = [...new Set(row)];
-  col = [...new Set(col)];
-
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix[i].length; j++) {
+  for (let i = 0; i < maxRows; i++) {
+    for (let j = 0; j < maxCols; j++) {
       if (row.includes(i) || col.includes(j)) {
         matrix[i][j] = 0;
       }
     }
   }
-
   return matrix;
 };
 

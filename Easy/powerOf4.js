@@ -2,22 +2,20 @@
  * Leetcode-342
  * Power of Four
  * https://leetcode.com/problems/power-of-four/
+ * #Math
  */
 
 var isPowerOfFour = function (n) {
-    binaryString = n.toString(4)
-    if (n <= 0 || binaryString[0] == '-') {
-        return false
-    } else {
-        countOf0 = binaryString.split("").filter((e) => e == "0").length
-        countOf1 = binaryString.split("").filter((e) => e == "1").length
-        if (countOf1 != 1) {
-            return false
-        }
-        return binaryString.length == (countOf0 + countOf1)
-    }
+  if (n <= 0) {
+    return false;
+  }
+  binaryString = n.toString(4);
+  binaryLength = binaryString.length;
+  oneCount = binaryString.split("").filter((e) => e == "1").length;
+  zeroCount = binaryString.split("").filter((e) => e == "0").length;
+  return oneCount == 1 && binaryLength == oneCount + zeroCount;
 };
 
-console.log(isPowerOfFour(16))
-console.log(isPowerOfFour(5))
-console.log(isPowerOfFour(1))
+console.log(isPowerOfFour(16));
+console.log(isPowerOfFour(5));
+console.log(isPowerOfFour(1));

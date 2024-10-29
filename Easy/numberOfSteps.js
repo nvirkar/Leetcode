@@ -13,13 +13,11 @@ var numberOfSteps = function (num) {
 var helper = function (num, steps) {
   if (num == 0) {
     return steps;
-  }
-  isEven = num % 2 == 0;
-
-  if (isEven) {
+  } else if (num % 2 == 0) {
     return helper(Math.floor(num / 2), steps + 1);
+  } else {
+    return helper(num - 1, steps + 1);
   }
-  return helper(num - 1, steps + 1);
 };
 
 console.log(numberOfSteps(14));

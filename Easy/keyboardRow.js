@@ -2,33 +2,39 @@
  * Leetcode-500
  * Keyboard Row
  * https://leetcode.com/problems/keyboard-row/
+ * #Array
  */
 
 var findWords = function (words) {
-    res = []
-    keyboardArr = ["qwertyuiop", "asdfghjkl", "zxcvbnm"]
-    keyboardRow = ""
-    for (let i = 0; i < words.length; i++) {
-        for (let k = 0; k < keyboardArr.length; k++) {
-            if (keyboardArr[k].toLowerCase().includes(words[i][0].toLowerCase())) {
-                keyboardRow = keyboardArr[k]
-                break;
-            }
-        }
-        count = 0
-        for (let j = 0; j < words[i].length; j++) {
-            if (keyboardRow.toLowerCase().includes(words[i][j].toLowerCase())) {
-                count++
-            }
-        }
-        if (count == words[i].length) {
-            res.push(words[i])
-        }
+  let res = [];
+  let keyboardRows = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
+  let keyboardRowsLength = keyboardRows.length;
+  let wordsLength = words.length;
+  for (let i = 0; i < wordsLength; i++) {
+    let word = words[i];
+    let wordLength = word.length;
+    let count = 0;
+    let row = "";
+    for (let i = 0; i < keyboardRowsLength; i++) {
+      if (keyboardRows[i].includes(word[0].toLowerCase())) {
+        row = keyboardRows[i];
+        break;
+      }
     }
-    return res;
+    for (let i = 0; i < wordLength; i++) {
+      if (row.includes(word[i].toLowerCase())) {
+        count++;
+      } else {
+        break;
+      }
+    }
+    if (wordLength == count) {
+      res.push(word);
+    }
+  }
+  return res;
 };
 
-console.log(findWords(["Hello", "Alaska", "Dad", "Peace"]))
-console.log(findWords(["omk"]))
-console.log(findWords(["adsdf", "sfd"]))
-
+console.log(findWords(["Hello", "Alaska", "Dad", "Peace"]));
+console.log(findWords(["omk"]));
+console.log(findWords(["adsdf", "sfd"]));
