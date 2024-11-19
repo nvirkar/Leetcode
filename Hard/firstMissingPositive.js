@@ -17,17 +17,19 @@ var firstMissingPositive = function (nums) {
   i = 0;
   while (i < numsLength) {
     correct = nums[i] - 1;
-    if (nums[i] > 0 && nums[i] <= numsLength && nums[i] != nums[correct]) {
+    if (correct > -1 && correct < numsLength && nums[correct] != nums[i]) {
       swap(nums, correct, i);
     } else {
       i++;
     }
   }
-  for (i = 0; i < numsLength; i++) {
+
+  for (let i = 0; i < numsLength; i++) {
     if (nums[i] != i + 1) {
       return i + 1;
     }
   }
+
   return numsLength + 1;
 };
 
