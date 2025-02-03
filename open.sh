@@ -8,8 +8,8 @@ fi
 
 search_string="$1"
 
-# Find files containing the search string (case-insensitive)
-file_paths=$(grep -irl --exclude-dir={.git,node_modules} "$search_string" . 2>/dev/null)
+# Find files containing the search string (case-insensitive, whole word)
+file_paths=$(grep -irlw --exclude-dir={.git,node_modules} "$search_string" . 2>/dev/null)
 
 # Check if any file is found
 if [ -z "$file_paths" ]; then
