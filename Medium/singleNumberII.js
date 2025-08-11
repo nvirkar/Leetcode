@@ -6,17 +6,17 @@
  */
 
 var singleNumber = function (nums) {
-  dict = {};
-  numsLength = nums.length;
+  let dict = {};
+  let numsLength = nums.length;
   for (let i = 0; i < numsLength; i++) {
-    if (nums[i] in dict) {
-      dict[nums[i]] = dict[nums[i]] + 1;
-    } else {
+    if (!(nums[i] in dict)) {
       dict[nums[i]] = 1;
+    } else {
+      dict[nums[i]] = dict[nums[i]] + 1;
     }
   }
-  ans = Object.keys(dict).find((key) => dict[key] == 1);
-  return ans;
+  let ans = Object.keys(dict).find((key) => dict[key] == 1);
+  return Number(ans);
 };
 
 console.log(singleNumber([2, 2, 3, 2]));

@@ -11,21 +11,17 @@
  */
 
 var singleNumberBrute = function (nums) {
-    let numsLength = nums.length;
-    if(numsLength == 1){
-        return nums[0]
+  let dict = {};
+  let numsLength = nums.length;
+  for (let i = 0; i < numsLength; i++) {
+    if (nums[i] in dict) {
+      dict[nums[i]] = dict[nums[i]] + 1;
+    } else {
+      dict[nums[i]] = 1;
     }
-
-    let dict = {}
-
-    for(let i=0;i<numsLength;i++){
-        if (!(nums[i] in dict)) {
-            dict[nums[i]] = 1
-        }else{
-            delete dict[nums[i]]
-        }
-    }
-    return Object.keys(dict)[0]
+  }
+  let ans = Object.keys(dict).find((key) => dict[key] == 1);
+  return Number(ans);
 };
 
 /**
@@ -34,21 +30,20 @@ var singleNumberBrute = function (nums) {
  * n^n =0 && n^0 = n
  */
 
-
 var singleNumber = function (nums) {
-    let res;
+  let res;
 
-    for(let num of nums){
-       res = res ^ num
-    }
+  for (let num of nums) {
+    res = res ^ num;
+  }
 
-    return res
+  return res;
 };
 
-console.log(singleNumber([2, 2, 1]))
-console.log(singleNumber([4, 1, 2, 1, 2]))
-console.log(singleNumber([1]))
+console.log(singleNumber([2, 2, 1]));
+console.log(singleNumber([4, 1, 2, 1, 2]));
+console.log(singleNumber([1]));
 
-console.log(singleNumberBrute([2, 2, 1]))
-console.log(singleNumberBrute([4, 1, 2, 1, 2]))
-console.log(singleNumberBrute([1]))
+console.log(singleNumberBrute([2, 2, 1]));
+console.log(singleNumberBrute([4, 1, 2, 1, 2]));
+console.log(singleNumberBrute([1]));
