@@ -5,9 +5,9 @@
  */
 
 var lengthOfLastWord = function (s) {
-  arr = s.trim().split(" ");
-  last = arr[arr.length - 1];
-  return last.length;
+  s = s.trim();
+  sArr = s.split(" ");
+  return sArr[sArr.length - 1].length;
 };
 
 console.log(lengthOfLastWord("Hello World"));

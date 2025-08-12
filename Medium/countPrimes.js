@@ -6,31 +6,29 @@
  */
 
 var countPrimes = function (n) {
-  let count = 0;
-  let arr = [];
+  count = 0;
   if (n < 2) {
     return count;
   }
-
-  for (let i = 0; i < n; i++) {
-    arr[i] = true;
+  prime = [false, false];
+  for (let i = 2; i < n; i++) {
+    prime.push(true);
   }
 
   for (let i = 2; i * i < n; i++) {
-    if (arr[i]) {
-      for (let j = 2; i * j < n; j++) {
-        if (arr[i * j]) {
-          arr[i * j] = false;
-        }
+    for (let j = 2; i * j < n; j++) {
+      if (prime[i * j]) {
+        prime[i * j] = false;
       }
     }
   }
 
   for (let i = 2; i < n; i++) {
-    if (arr[i]) {
+    if (prime[i]) {
       count++;
     }
   }
+
   return count;
 };
 

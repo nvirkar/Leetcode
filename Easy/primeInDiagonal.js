@@ -6,37 +6,40 @@
  */
 
 var diagonalPrime = function (nums) {
-  let digonalData = [];
-  let max = 0;
-  for (let row = 0; row < nums.length; row++) {
-    for (let col = 0; col < nums[0].length; col++) {
-      if (nums.length - 1 == row + col || row == col) {
-        number = nums[row][col];
-        digonalData.push(number);
-        max = Math.max(max, number);
+  res = 0;
+  rowMax = nums.length;
+  colMax = nums[0].length;
+  diagonalArr = [];
+  max = -1;
+  for (row = 0; row < rowMax; row++) {
+    for (col = 0; col < colMax; col++) {
+      if (row == col || row + col == rowMax - 1) {
+        cell = nums[row][col];
+        diagonalArr.push(cell);
+        max = Math.max(max, cell);
       }
     }
   }
-  arr = [false, false];
-  let primeDiagonalMax = 0;
+
+  prime = [false, false];
   for (let i = 2; i <= max; i++) {
-    arr.push(true);
+    prime.push(true);
   }
-  for (let i = 2; i < max; i++) {
-    if (arr[i]) {
-      for (let j = 2; i * j <= max; j++) {
-        if (arr[i * j]) {
-          arr[i * j] = false;
-        }
+  for (let i = 2; i * i <= max; i++) {
+    for (let j = 2; i * j <= max; j++) {
+      if (prime[i * j]) {
+        prime[i * j] = false;
       }
     }
   }
-  for (let i = 0; i < digonalData.length; i++) {
-    if (arr[digonalData[i]]) {
-      primeDiagonalMax = Math.max(primeDiagonalMax, digonalData[i]);
+
+  for (let i = 0; i < diagonalArr.length; i++) {
+    if (prime[diagonalArr[i]]) {
+      res = Math.max(res, diagonalArr[i]);
     }
   }
-  return primeDiagonalMax;
+  return res;
+  console.log(diagonalArr, max, prime);
 };
 
 console.log(

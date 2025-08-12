@@ -5,30 +5,26 @@
  * #Arrays
  */
 
+var reverseVowels = function (s) {
+  let vowels = ["a", "e", "i", "o", "u"];
+  sArray = s.split("");
+  sArrayLength = sArray.length;
+  stack = [];
 
-var reverseVowels = function(s) {
-  let vowels = ['a','e','i','o','u']
-  let letters = s.split("")
-  let lettersLength = letters.length;
-  let stack = []
-  
-  for(let i=0;i<lettersLength;i++ ){
-    if(vowels.includes(letters[i].toLowerCase())){
-      stack.push(letters[i])
+  for (let i = 0; i < sArrayLength; i++) {
+    if (vowels.includes(sArray[i].toLowerCase())) {
+      stack.push(sArray[i]);
     }
   }
 
-  for(let i=0;i<lettersLength;i++ ){
-    if(vowels.includes(letters[i].toLowerCase())){
-     letters[i] =  stack.pop();
+  for (let i = 0; i < sArrayLength; i++) {
+    if (vowels.includes(sArray[i].toLowerCase())) {
+      sArray[i] = stack.pop();
     }
   }
-
-  return letters.join("")
-
+  return sArray.join("");
 };
 
 console.log(reverseVowels("hello"));
 console.log(reverseVowels("leetcode"));
 console.log(reverseVowels("aA"));
-

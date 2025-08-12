@@ -5,18 +5,19 @@
  * Array
  */
 
-var diagonalSum = function(matrix) {
-  sum = 0
-  for(let row = 0;row< matrix.length;row++){
-    for(let col =0; col < matrix[0].length;col++){
-      if((matrix.length -1) == (row + col) || row == col){
-        sum = sum + matrix[row][col]
+var diagonalSum = function (mat) {
+  sum = 0;
+  rowMax = mat.length;
+  colMax = mat[0].length;
+  for (row = 0; row < rowMax; row++) {
+    for (col = 0; col < colMax; col++) {
+      if (row == col || row + col == rowMax - 1) {
+        sum = sum + mat[row][col];
       }
     }
-  }  
-  return sum
+  }
+  return sum;
 };
-
 
 console.log(
   diagonalSum([
@@ -25,7 +26,6 @@ console.log(
     [7, 8, 9],
   ])
 );
-
 
 console.log(
   diagonalSum([
