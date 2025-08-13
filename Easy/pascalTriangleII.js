@@ -7,14 +7,15 @@
 
 // nCr = n! / (r! * (n - r)!)
 
-var getRow = function (rowIndex) {
-  fact = [1];
-  res = [];
-  for (let i = 1; i <= rowIndex; i++) {
+var getRow = function (n) {
+  fact = [1, 1];
+  for (let i = 2; i <= n; i++) {
     fact[i] = i * fact[i - 1];
   }
-  for (j = 0; j <= rowIndex; j++) {
-    num = fact[rowIndex] / (fact[j] * fact[rowIndex - j]);
+  res = [];
+
+  for (let i = 0; i <= n; i++) {
+    num = fact[n] / (fact[i] * fact[n - i]);
     res.push(Math.round(num));
   }
 
@@ -24,3 +25,4 @@ var getRow = function (rowIndex) {
 console.log(getRow(3));
 console.log(getRow(0));
 console.log(getRow(1));
+console.log(getRow(23));

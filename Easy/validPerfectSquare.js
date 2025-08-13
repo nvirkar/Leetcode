@@ -5,26 +5,22 @@
  * #BinarySearch
  */
 
-var isPerfectSquare = function (num) {
-    if (num == 1) {
-        return true;
-    }
+var isPerfectSquare = function (x) {
+  low = 1;
+  high = x;
 
-    low = 2;
-    high = num;
-
-    while (low <= high) {
-        mid = low + Math.floor((high - low) / 2)
-        if (mid * mid == num) {
-            return true;
-        } else if (mid * mid < num) {
-            low = mid + 1;
-        } else {
-            high = mid - 1;
-        }
+  while (low <= high) {
+    mid = low + Math.floor((high - low) / 2);
+    if (mid * mid == x) {
+      return true;
+    } else if (mid * mid < x) {
+      low = mid + 1;
+    } else {
+      high = mid - 1;
     }
-    return false;
+  }
+  return false;
 };
 
-console.log(isPerfectSquare(16))
-console.log(isPerfectSquare(14))
+console.log(isPerfectSquare(16));
+console.log(isPerfectSquare(14));

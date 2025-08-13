@@ -7,21 +7,21 @@
 
 // nCr = n! / (r! * (n - r)!)
 
-var generate = function (numRows) {
-  fact = [1];
-  res = [];
-  for (let i = 1; i <= numRows; i++) {
+var generate = function (n) {
+  fact = [1, 1];
+  for (let i = 2; i <= n; i++) {
     fact[i] = i * fact[i - 1];
   }
-  for (let i = 0; i < numRows; i++) {
+  res = [];
+  for (let i = 0; i < n; i++) {
     tempArr = [];
-    for (j = 0; j <= i; j++) {
+    for (let j = 0; j <= i; j++) {
       num = fact[i] / (fact[j] * fact[i - j]);
       tempArr.push(Math.round(num));
     }
-
     res.push(tempArr);
   }
+
   return res;
 };
 console.log(generate(5));

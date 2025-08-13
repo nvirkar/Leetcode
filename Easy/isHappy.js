@@ -6,26 +6,25 @@
  */
 
 var isHappy = function (n) {
-  let slow = n;
-  let fast = n;
+  slow = n;
+  fast = n;
 
   do {
-    slow = getSquareOfDigits(slow);
-    fast = getSquareOfDigits(getSquareOfDigits(fast));
-  } while (slow != fast);
-
-  if (fast == 1) {
-    return true;
-  }
+    slow = helper(slow);
+    fast = helper(helper(fast));
+    if (fast == 1) {
+      return true;
+    }
+  } while (fast !== slow);
   return false;
 };
 
-var getSquareOfDigits = function (n) {
-  let sum = 0;
-  while (n != 0) {
-    digit = n % 10;
-    sum = sum + digit * digit;
-    n = Math.floor(n / 10);
+var helper = function (num) {
+  sum = 0;
+  while (num != 0) {
+    rem = num % 10;
+    sum = sum + rem * rem;
+    num = Math.floor(num / 10);
   }
   return sum;
 };
