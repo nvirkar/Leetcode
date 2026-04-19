@@ -2,27 +2,22 @@
  * Leetcode-287
  * Find the Duplicate Number
  * https://leetcode.com/problems/find-the-duplicate-number/
- * #CyclicSort
+ * #Hashtable
  * #Array
  */
-swap = function (nums, first, second) {
-  temp = nums[first];
-  nums[first] = nums[second];
-  nums[second] = temp;
-};
 
 var findDuplicate = function (nums) {
-  i = 0;
+  dict = {};
   numsLength = nums.length;
-  while (i < numsLength) {
-    correct = nums[i] - 1;
-    if (nums[i] != nums[correct]) {
-      swap(nums, correct, i);
+  for (let i = 0; i < numsLength; i++) {
+    if (!(nums[i] in dict)) {
+      dict[nums[i]] = 1;
     } else {
-      i++;
+      return nums[i];
     }
   }
-  return nums[numsLength - 1];
+
+  return numsLength;
 };
 
 console.log(findDuplicate([1, 3, 4, 2, 2]));
