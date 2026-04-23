@@ -2,29 +2,29 @@
  * Leetcode-46
  * Permutations
  * https://leetcode.com/problems/permutations/
+ * #Recursion
  */
 
-var getPermutations = function (p, up) {
-    if (up.length == 0) {
-        // console.log(p)
-        res.push(p)
-        return
-    }
+var getPermutations = function (up, p) {
+  if (p.length == 0) {
+    res.push(up);
+    return;
+  }
 
-    let ch = up.slice(0, 1)
+  let el = p[0];
 
-    for (let i = 0; i <= p.length; i++) {
-        let f = p.slice(0, i)
-        let s = p.slice(i, p.length)
-        getPermutations([...f, ...ch, ...s], up.slice(1))
-    }
-}
-
-var permute = function (nums) {
-    res = []
-    getPermutations([], nums)
-    return res
+  for (let i = 0; i <= up.length; i++) {
+    let f = up.slice(0, i);
+    let s = up.slice(i, up.length);
+    getPermutations([...f, el, ...s], p.slice(1));
+  }
 };
 
-console.log(permute([1, 2, 3]))
-console.log(permute([0, 1]))
+var permute = function (nums) {
+  res = [];
+  getPermutations([], nums);
+  return res;
+};
+
+console.log(permute([1, 2, 3]));
+console.log(permute([0, 1]));
