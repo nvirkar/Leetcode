@@ -1,39 +1,43 @@
-// Leetcode-92
-// Reverse Linked List II
-// https://leetcode.com/problems/reverse-linked-list-ii/description/
+/**
+ * Leetcode-92
+ * Reverse Linked List II
+ * https://leetcode.com/problems/reverse-linked-list-ii/description/
+ * #Linked List
+ */
 
 
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        if(left == right){
-            return  head;
+             if(left == right){
+            return head;
         }
 
         ListNode prev = null;
         ListNode curr = head;
-        for(int i=0; curr != null && i< left-1;i++){
+
+        for(int i=0; curr!= null && i< left-1;i++){
             prev = curr;
             curr = curr.next;
         }
+
         ListNode last = prev;
+        ListNode next = curr;
         ListNode newEnd = curr;
 
-        ListNode next = curr.next;
-        for(int i=0; curr!=null && i < right-left+1;i++){
+        for(int i=0; curr!=null && i< right -left + 1;i++){
+            next = next.next;
             curr.next = prev;
             prev = curr;
             curr = next;
-            if(next != null)
-            next = next.next;
         }
 
-        if(last != null){
-            last.next = prev;
-        }else{
+        if(last == null){
             head = prev;
+        }else{
+            last.next = prev;
         }
 
-        newEnd.next = curr;
-        return  head;
+        newEnd.next =curr;
+        return head;
     }
 }

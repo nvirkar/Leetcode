@@ -15,14 +15,15 @@ var isHappy = function (n) {
     if (fast == 1) {
       return true;
     }
-  } while (fast !== slow);
+  } while (slow != fast);
+
   return false;
 };
 
 var helper = function (num) {
-  sum = 0;
+  let sum = 0;
   while (num != 0) {
-    rem = num % 10;
+    let rem = num % 10;
     sum = sum + rem * rem;
     num = Math.floor(num / 10);
   }

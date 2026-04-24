@@ -16,13 +16,17 @@ public class LL {
     }
 
     public void insertLast(int val){
-       Node node = new Node(val);
-       Node temp = head;
-       while(temp.next != null){
-           temp = temp.next;
-       }
-       temp.next = node;
-       size++;
+        Node node = new Node(val, null);
+      if(head == null){
+        head = node;
+        return;
+      }
+      Node temp = head;
+      while(temp.next != null){
+          temp= temp.next;
+      }
+      temp.next = node;
+      size++;
     }
 
     public void insert(int val, int index){
@@ -46,6 +50,24 @@ public class LL {
         size++;
 
     }
+
+    // insert using recursion
+
+    public void insertRecursion(int val , int index){
+        head  = insertRecursion(val,index, head);
+    }
+
+    public Node insertRecursion(int val, int index,Node temp){
+        if(index == 0){
+            Node node = new Node(val, temp);
+            size++;
+            return node;
+        }
+        temp.next = insertRecursion(val,index -1 ,temp.next);
+        return temp;
+    }
+
+
 
     public int deleteFirst(){
        int val = head.value;
@@ -113,7 +135,82 @@ public class LL {
         System.out.println("END");
     }
 
+    // problems
+    public Node deleteDuplicates(Node head){
+        if(head == null){
+            return head;
+        }
+        Node temp = head;
+        while(temp.next != null){
+            if(temp.value == temp.next.value){
+                temp.next = temp.next.next;
+            }else{
+                temp = temp.next;
+            }
+        }
+        return head;
+    }
 
+    // merge
+
+    public static LL merge(LL first, LL second){
+        Node f = first.head;
+        Node s = second.head;
+
+        LL ans  = new LL();
+
+        while(f != null && s != null){
+            if(f.value < s.value){
+                ans.insertLast(f.value);
+                f = f.next;
+            }else{
+                ans.insertLast(s.value);
+                s=s.next;
+            }
+        }
+        while(f!=null){
+            ans.insertLast(f.value);
+            f = f.next;
+        }
+        while(s!=null){
+            ans.insertLast(s.value);
+            s=s.next;
+        }
+
+        return ans;
+
+    }
+
+
+    public static void main(String[] args) {
+//        LL list = new LL();
+//        list.insertLast(1);
+//        list.insertLast(1);
+//        list.insertLast(2);
+//        list.insertLast(4);
+//        list.insertLast(4);
+//        list.display();
+//        list.deleteDuplicates(list.head);
+//        list.display();
+
+        LL first = new LL();
+        LL second = new LL();
+
+        first.insertLast(1);
+        first.insertLast(3);
+        first.insertLast(5);
+
+        second.insertLast(1);
+        second.insertLast(2);
+        second.insertLast(9);
+        second.insertLast(4);
+
+        first.display();
+        second.display();
+
+        LL ans = LL.merge(first,second);
+        ans.display();
+    }
 
     private class Node{
         private int value;

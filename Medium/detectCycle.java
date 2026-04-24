@@ -1,40 +1,49 @@
-// Leetcode-142
-// Linked List Cycle II
-// https://leetcode.com/problems/linked-list-cycle-ii/description/
+/**
+ * Leetcode-142
+ * Linked List Cycle II
+ * https://leetcode.com/problems/linked-list-cycle-ii/description/
+ * #Linked List
+ */
 
 
 public class Solution {
- public ListNode detectCycle(ListNode head) {
-        ListNode fast = head;
+    public ListNode detectCycle(ListNode head) {
         ListNode slow = head;
-        int length =0;
+        ListNode fast = head;
 
-        while(fast!=null && fast.next != null){
-            fast = fast.next.next;
+        while(fast != null && fast.next != null){
             slow = slow.next;
-            if(fast == slow) break;
+            fast= fast.next.next;
+
+            if(slow == fast){
+                break;
+            }
         }
+
         if(fast == null || fast.next == null){
             return null;
         }
-        
-        // length of loop
-        do{
-            fast = fast.next;
-            length++;
 
+        int length = 0;
+        do{
+            length = length + 1;
+            fast = fast.next;
         }while(fast != slow);
 
-        slow = head;
-        while(length > 0){
-            slow = slow.next;
+        ListNode  f = head;
+        ListNode s = head;
+
+        while(length !=0){
+            s= s.next;
             length--;
         }
 
-       while (head != slow) {
-            head = head.next;
-            slow = slow.next;
+        while(f != s){
+            f = f.next;
+            s = s.next;
         }
-        return head;
+
+        return f;
+      
     }
 }

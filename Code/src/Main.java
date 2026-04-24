@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
 
-//        singleLL();
+        singleLL();
 //        doubleLL();
-      circularLL();
+//      circularLL();
     }
 
     public static void circularLL(){
@@ -43,7 +43,8 @@ public class Main {
         System.out.println(list.deleteFirst());
         list.display();
         System.out.println(list.delete(2));
-
+        list.display();
+        list.insertRecursion(70,2);
         list.display();
     }
 

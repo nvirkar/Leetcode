@@ -1,6 +1,9 @@
-// Leetcode-234
-// Palindrome Linked List
-// https://leetcode.com/problems/palindrome-linked-list/description/
+/**
+ * Leetcode-234
+ * Palindrome Linked List
+ * https://leetcode.com/problems/palindrome-linked-list/description/
+ * #Linked List
+ */
 
 class Solution {
     public ListNode reverseList(ListNode head) {
@@ -30,13 +33,12 @@ class Solution {
         }
         return slow;
     }
-
     public boolean isPalindrome(ListNode head) {
         ListNode mid = middleNode(head);
         ListNode headSecond = reverseList(mid);
         ListNode reverseHead = headSecond;
 
-        while(head!= null && headSecond!= null){
+        while(head != null && headSecond != null){
             if(head.val != headSecond.val){
                 break;
             }
@@ -47,7 +49,7 @@ class Solution {
         reverseList(reverseHead);
 
         if(head == null || headSecond == null){
-            return  true;
+            return true;
         }
         return false;
     }
