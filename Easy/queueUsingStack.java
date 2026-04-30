@@ -1,13 +1,15 @@
-// Leetcode-232
-// Implement Queue using Stacks
-// https://leetcode.com/problems/implement-queue-using-stacks/description/
-
-
+/**
+ * Leetcode-232
+ * Implement Queue using Stacks
+ * https://leetcode.com/problems/implement-queue-using-stacks/description/
+ * #Stack
+ */
 
 class MyQueue {
 
     private Stack<Integer> first;
     private Stack<Integer> second;
+
     public MyQueue() {
         first = new Stack<>();
         second = new Stack<>();
@@ -18,23 +20,22 @@ class MyQueue {
     }
     
     public int pop() {
-        while(!first.isEmpty()){
+        while(!(first.isEmpty())){
             second.push(first.pop());
         }
         int removed = second.pop();
-        while(!second.isEmpty()){
+        while(!(second.isEmpty())){
             first.push(second.pop());
         }
         return removed;
     }
     
     public int peek() {
-        while(!first.isEmpty()){
+         while(!(first.isEmpty())){
             second.push(first.pop());
         }
         int peeked = second.peek();
-       
-        while(!second.isEmpty()){
+        while(!(second.isEmpty())){
             first.push(second.pop());
         }
         return peeked;
